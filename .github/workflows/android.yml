@@ -25,6 +25,11 @@ jobs:
     - name: Grant Execute Permission for Gradlew
       run: chmod +x gradlew
       continue-on-error: true
+    - name: Download missing gradle-wrapper.jar
+      run: |
+        mkdir -p gradle/wrapper
+        curl -L -o gradle/wrapper/gradle-wrapper.jar https://githubusercontent.com
+
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
